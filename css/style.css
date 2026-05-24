@@ -1,0 +1,123 @@
+body{
+
+  font-family:'Times New Roman', Times, serif;
+
+  background:
+  linear-gradient(
+    135deg,
+    #93c5fd,
+    #c4b5fd,
+    #f9a8d4
+  );
+
+  padding:20px;
+
+}
+
+h1{
+
+  text-align:center;
+  color:#1e3a8a;
+
+}
+
+table{
+
+  width:100%;
+  border-collapse:collapse;
+  background:white;
+  margin-top:20px;
+
+}
+
+th, td{
+
+  border:1px solid #ddd;
+  padding:12px;
+
+}
+
+th{
+
+  background:#2563eb;
+  color:white;
+
+}
+
+.form-box,
+.filter-box{
+
+  display:flex;
+  flex-wrap:wrap;
+  gap:10px;
+  margin:20px 0;
+
+}
+
+input,
+select,
+button{
+
+  padding:10px;
+  border-radius:10px;
+  border:none;
+
+}
+
+button{
+
+  background:#7c3aed;
+  color:white;
+  cursor:pointer;
+
+}
+
+.safe{
+
+  color:green;
+  font-weight:bold;
+
+}
+
+.warning{
+
+  color:orange;
+  font-weight:bold;
+
+}
+
+.danger{
+
+  color:red;
+  font-weight:bold;
+
+}
+
+.home{
+
+  text-align:center;
+  margin-top:100px;
+
+}
+
+.menu{
+
+  margin-top:30px;
+
+}
+
+.menu a{
+
+  text-decoration:none;
+  background:#2563eb;
+  color:white;
+
+  padding:15px 20px;
+
+  border-radius:12px;
+
+  margin:10px;
+
+  display:inline-block;
+
+}

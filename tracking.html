@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+
+  <meta charset="UTF-8">
+
+  <title>Tracking Delivery Order</title>
+
+  <!-- VUE 2 -->
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+  <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+
+<div id="trackingApp">
+
+  <h1>🚚 Tracking Delivery Order</h1>
+
+  <div class="form-box">
+
+    <input
+      v-model="form.nim"
+      placeholder="NIM">
+
+    <input
+      v-model="form.nama"
+      placeholder="Nama">
+
+    <select v-model="form.ekspedisi">
+
+      <option value="">
+        Pilih Ekspedisi
+      </option>
+
+      <option
+        v-for="item in pengirimanList"
+        :key="item.kode">
+
+        {{ item.nama }}
+
+      </option>
+
+    </select>
+
+    <select v-model="selectedPaket">
+
+      <option value="">
+        Pilih Paket
+      </option>
+
+      <option
+        v-for="paket in paketList"
+        :key="paket.kode">
+
+        {{ paket.kode }} -
+        {{ paket.nama }}
+
+      </option>
+
+    </select>
+
+    <div
+      v-if="paketDipilih"
+      class="paket-box">
+
+      <h3>Isi Paket:</h3>
+
+      <ul>
+
+        <li
+          v-for="isi in paketDipilih.isi">
+
+          {{ isi }}
+
+        </li>
+
+      </ul>
+
+      <p>
+        Total:
+        Rp {{ paketDipilih.harga }}
+      </p>
+
+    </div>
+
+    <button @click="tambahDO">
+      Tambah DO
+    </button>
+
+  </div>
+
+  <table>
+
+    <thead>
+
+      <tr>
+
+        <th>No DO</th>
+        <th>NIM</th>
+        <th>Nama</th>
+        <th>Ekspedisi</th>
+        <th>Paket</th>
+        <th>Total</th>
+
+      </tr>
+
+    </thead>
+
+    <tbody>
+
+      <tr
+        v-for="item in trackingList"
+        :key="item.nomor">
+
+        <td>{{ item.nomor }}</td>
+        <td>{{ item.nim }}</td>
+        <td>{{ item.nama }}</td>
+        <td>{{ item.ekspedisi }}</td>
+        <td>{{ item.paket }}</td>
+        <td>Rp {{ item.total }}</td>
+
+      </tr>
+
+    </tbody>
+
+  </table>
+
+</div>
+
+
+<script src="js/tracking-app.js"></script>
+
+</body>
+</html>

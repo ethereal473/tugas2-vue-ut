@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+
+  <meta charset="UTF-8">
+
+  <title>Stok Bahan Ajar</title>
+
+  <!-- VUE 2 -->
+
+  <script src="https://cdn.jsdelivr.net/npm/vue@2/dist/vue.js"></script>
+
+  <link rel="stylesheet" href="css/style.css">
+
+</head>
+<body>
+
+<div id="app">
+
+  <h1>📦 Stok Bahan Ajar</h1>
+
+  <!-- FILTER -->
+
+  <div class="filter-box">
+
+    <select v-model="selectedUPBJJ">
+
+      <option value="">
+        Semua UPBJJ
+      </option>
+
+      <option
+        v-for="upbjj in upbjjList"
+        :key="upbjj">
+
+        {{ upbjj }}
+
+      </option>
+
+    </select>
+
+    <select v-model="selectedKategori">
+
+      <option value="">
+        Semua Kategori
+      </option>
+
+      <option
+        v-for="kategori in kategoriFiltered"
+        :key="kategori">
+
+        {{ kategori }}
+
+      </option>
+
+    </select>
+
+    <select v-model="sortBy">
+
+      <option value="">
+        Sort Data
+      </option>
+
+      <option value="judul">
+        Judul
+      </option>
+
+      <option value="qty">
+        Qty
+      </option>
+
+      <option value="harga">
+        Harga
+      </option>
+
+    </select>
+
+    <label>
+
+      <input
+        type="checkbox"
+        v-model="showWarning">
+
+      Stok Menipis
+
+    </label>
+
+    <label>
+
+      <input
+        type="checkbox"
+        v-model="showEmpty">
+
+      Stok Kosong
+
+    </label>
+
+    <button @click="resetFilter">
+      Reset
+    </button>
+
+  </div>
+
+  <!-- TABEL -->
+
+  <table>
+
+    <thead>
+
+      <tr>
+
+        <th>Kode</th>
+        <th>Judul</th>
+        <th>Kategori</th>
+        <th>UPBJJ</th>
+        <th>Lokasi</th>
+        <th>Harga</th>
+        <th>Qty</th>
+        <th>Safety</th>
+        <th>Status</th>
+        <th>Catatan</th>
+
+      </tr>
+
+    </thead>
+
+    <tbody>
+
+      <tr
+        v-for="item in filteredData"
+        :key="item.kode">
+
+        <td>{{ item.kode }}</td>
+        <td>{{ item.judul }}</td>
+        <td>{{ item.kategori }}</td>
+        <td>{{ item.upbjj }}</td>
+        <td>{{ item.lokasiRak }}</td>
+        <td>Rp {{ item.harga }}</td>
+        <td>{{ item.qty }}</td>
+        <td>{{ item.safety }}</td>
+
+        <td>
+
+          <span
+            v-if="item.qty == 0"
+            class="danger">
+
+            ❌ Kosong
+
+          </span>
+
+          <span
+            v-else-if="item.qty < item.safety"
+            class="warning">
+
+            ⚠️ Menipis
+
+          </span>
+
+          <span
+            v-else
+            class="safe">
+
+            ✅ Aman
+
+          </span>
+
+        </td>
+
+        <td v-html="item.catatanHTML"></td>
+
+      </tr>
+
+    </tbody>
+
+  </table>
+
+  <!-- FORM -->
+
+  <h2>Tambah Data</h2>
+
+  <div class="form-box">
+
+    <input
+      v-model="newData.kode"
+      placeholder="Kode">
+
+    <input
+      v-model="newData.judul"
+      placeholder="Judul">
+
+    <input
+      v-model="newData.kategori"
+      placeholder="Kategori">
+
+    <input
+      v-model="newData.upbjj"
+      placeholder="UPBJJ">
+
+    <input
+      v-model="newData.lokasiRak"
+      placeholder="Lokasi">
+
+    <input
+      type="number"
+      v-model="newData.harga"
+      placeholder="Harga">
+
+    <input
+      type="number"
+      v-model="newData.qty"
+      placeholder="Qty">
+
+    <input
+      type="number"
+      v-model="newData.safety"
+      placeholder="Safety">
+
+    <button @click="tambahData">
+      Simpan
+    </button>
+
+  </div>
+
+</div>
+
+<script src="js/stok-app.js"></script>
+
+
+</body>
+</html>
