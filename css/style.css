@@ -121,3 +121,36 @@ button{
   display:inline-block;
 
 }
+.back-home{
+
+  margin-bottom:20px;
+
+}
+
+.back-home a{
+
+  text-decoration:none;
+
+  background:#2563eb;
+
+  color:white;
+
+  padding:10px 16px;
+
+  border-radius:12px;
+
+  font-weight:bold;
+
+  display:inline-block;
+
+  transition:0.3s;
+
+}
+
+.back-home a:hover{
+
+  background:#1d4ed8;
+
+  transform:scale(1.05);
+
+}
